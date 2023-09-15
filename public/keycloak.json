@@ -1,0 +1,8 @@
+{
+  "realm": "eventos",
+  "auth-server-url": "https://auth.eventos.fernandohara.com.br/",
+  "ssl-required": "external",
+  "resource": "eventos-react-app",
+  "public-client": true,
+  "confidential-port": 0
+}
