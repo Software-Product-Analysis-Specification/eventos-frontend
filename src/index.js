@@ -8,9 +8,7 @@ import KeyCloakService from './security/KeycloakService';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const renderApp = () =>
  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <App />
   );
 KeyCloakService.CallLogin(renderApp);
 
