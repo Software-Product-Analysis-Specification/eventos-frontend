@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Button, Container, Table, TableCell } from 'semantic-ui-react'
+import { Button, Confirm, Container, Table, TableCell } from 'semantic-ui-react'
+import DeleteButton from './components/DeleteButton';
 
 export default function Read() {
     const [APIData, setAPIData] = useState([]);
@@ -47,7 +48,7 @@ export default function Read() {
                                 <Button onClick={() => setData(data)}>Atualizar</Button>
                             </TableCell>
                             <TableCell>
-                                <Button onClick={() => deleteData(data)}>Excluir</Button>
+                                <DeleteButton data={data} />
                             </TableCell>
                         </Table.Row>
                     )
