@@ -33,7 +33,7 @@ export default function Read() {
 
                     function deleteData(data: any): void {
                         let { id } = data;
-                        axios.delete(`http://localhost:5279/api/eventos/${id}`)
+                        axios.delete(`http://backend.eventos.fernandohara.com.br/api/eventos/${id}`)
                         .then(response => {
                             window.location.href = "/eventos";                            
                         });
