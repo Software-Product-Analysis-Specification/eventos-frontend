@@ -7,7 +7,7 @@ const keycloakInstance = new Keycloak();
  *
  * @param onAuthenticatedCallback
  */
-const Login = (onAuthenticatedCallback) => {
+const Login = (onAuthenticatedCallback: () => any) => {
   keycloakInstance
     .init({ onLoad: "login-required" })
     .then(function (authenticated) {
