@@ -8,8 +8,8 @@ export default function AppRoutes() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Layout />}>
-                <Route path="eventos" element={<Eventos />} />
-                <Route path="participantes" element={<Participantes />} />
+                <Route path="/eventos" element={<Eventos />} />
+                <Route path="/participantes" element={<Participantes />} />
             </Route>
           </Routes>
         </BrowserRouter>
