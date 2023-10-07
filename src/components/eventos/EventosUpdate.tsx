@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useImperativeHandle, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Container, Form } from "semantic-ui-react";
 
 const EventosUpdate = ({ pid, handleId }: { pid: string, handleId: any }) => {
@@ -8,7 +8,7 @@ const EventosUpdate = ({ pid, handleId }: { pid: string, handleId: any }) => {
     const [description, setDescription] = useState('');
 
     useEffect(() => {
-        if(pid != id)
+        if(pid !== id)
         {
             axios.get(`https://backend.eventos.fernandohara.com.br/api/eventos/${pid}`)
                 .then((response) => {

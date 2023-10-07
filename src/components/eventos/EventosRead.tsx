@@ -27,19 +27,6 @@ const EventosRead = ({ handleId }: {handleId: any}) => {
 
                 <Table.Body>
                 {APIData.map((data: any) => {
-                    function setData(data: any): void {
-                        let { id } = data;
-                        window.location.href = '/eventos?id=' + id;
-                    }
-
-                    function deleteData(data: any): void {
-                        let { id } = data;
-                        axios.delete(`https://backend.eventos.fernandohara.com.br/api/eventos/${id}`)
-                        .then(response => {
-                            window.location.href = "/eventos";                            
-                        });
-                    }
-
                     return (
                         <Table.Row>
                             <Table.Cell>{data.nome}</Table.Cell>
