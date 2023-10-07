@@ -1,14 +1,13 @@
 import { Button, Container, Table, TableCell } from "semantic-ui-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import EventosDeleteButton from "./EventosDeleteButton";
-import moment from "moment-timezone";
+import ParticipantesDeleteButton from "./ParticipantesDeleteButton";
 
-const EventosRead = ({ handleId }: {handleId: any}) => {
+const ParticipantesRead = ({ handleId }: {handleId: any}) => {
     const [APIData, setAPIData] = useState([]);
     
     useEffect(() => {
-        axios.get(`https://backend.eventos.fernandohara.com.br/api/eventos`)
+        axios.get(`https://backend.eventos.fernandohara.com.br/api/participantes`)
             .then((response) => {
                 setAPIData(response.data);
             })
@@ -20,8 +19,8 @@ const EventosRead = ({ handleId }: {handleId: any}) => {
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Nome</Table.HeaderCell>
-                        <Table.HeaderCell>Descrição</Table.HeaderCell>
-                        <Table.HeaderCell>Data</Table.HeaderCell>
+                        <Table.HeaderCell>E-mail</Table.HeaderCell>
+                        <Table.HeaderCell>Whatsapp</Table.HeaderCell>
                         <Table.HeaderCell>Atualizar</Table.HeaderCell>
                         <Table.HeaderCell>Excluir</Table.HeaderCell>
                     </Table.Row>
@@ -29,25 +28,16 @@ const EventosRead = ({ handleId }: {handleId: any}) => {
 
                 <Table.Body>
                 {APIData.map((data: any) => {
-                    let date = '';
-
-                    if(data.data !== null)
-                    {
-                        var gmt = moment.tz(data.data, 'GMT');
-                        
-                        date = gmt.tz("America/Sao_Paulo").format('DD/MM/YYYY HH:mm');
-                    }
-
                     return (
                         <Table.Row key={data.id}>
                             <Table.Cell>{data.nome}</Table.Cell>
-                            <Table.Cell>{data.descricao}</Table.Cell>
-                            <Table.Cell>{date}</Table.Cell>
+                            <Table.Cell>{data.email}</Table.Cell>
+                            <Table.Cell>{data.whatsapp}</Table.Cell>
                             <TableCell>
                                 <Button onClick={() => handleId(data.id)}>Atualizar</Button>
                             </TableCell>
                             <TableCell>
-                                <EventosDeleteButton data={data} />
+                                <ParticipantesDeleteButton data={data} />
                             </TableCell>
                         </Table.Row>
                     )
@@ -58,4 +48,4 @@ const EventosRead = ({ handleId }: {handleId: any}) => {
     );
 };
 
-export default EventosRead;
+export default ParticipantesRead;

@@ -11,9 +11,7 @@ const root = ReactDOM.createRoot(
 );
 const renderApp = () =>
   root.render(
-    <React.StrictMode>
-      <AppRoutes />
-    </React.StrictMode>
+    <AppRoutes />
   );
 KeyCloakService.CallLogin(renderApp);
 
