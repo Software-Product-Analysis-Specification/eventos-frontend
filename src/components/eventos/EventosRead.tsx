@@ -2,6 +2,7 @@ import { Button, Container, Table, TableCell } from "semantic-ui-react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import EventosDeleteButton from "./EventosDeleteButton";
+import moment from "moment-timezone";
 
 const EventosRead = ({ handleId }: {handleId: any}) => {
     const [APIData, setAPIData] = useState([]);
@@ -20,6 +21,7 @@ const EventosRead = ({ handleId }: {handleId: any}) => {
                     <Table.Row>
                         <Table.HeaderCell>Nome</Table.HeaderCell>
                         <Table.HeaderCell>Descrição</Table.HeaderCell>
+                        <Table.HeaderCell>Data</Table.HeaderCell>
                         <Table.HeaderCell>Atualizar</Table.HeaderCell>
                         <Table.HeaderCell>Excluir</Table.HeaderCell>
                     </Table.Row>
@@ -27,10 +29,20 @@ const EventosRead = ({ handleId }: {handleId: any}) => {
 
                 <Table.Body>
                 {APIData.map((data: any) => {
+                    let date = '';
+
+                    if(data.data !== null)
+                    {
+                        var gmt = moment.tz(data.data, 'GMT');
+                        
+                        date = gmt.tz("America/Sao_Paulo").format('DD/MM/YYYY HH:mm');
+                    }
+
                     return (
                         <Table.Row>
                             <Table.Cell>{data.nome}</Table.Cell>
                             <Table.Cell>{data.descricao}</Table.Cell>
+                            <Table.Cell>{date}</Table.Cell>
                             <TableCell>
                                 <Button onClick={() => handleId(data.id)}>Atualizar</Button>
                             </TableCell>
