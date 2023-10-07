@@ -1,18 +1,22 @@
 import { Container } from 'semantic-ui-react';
-import Create from './Create';
-import Read from './Read';
-import Update from './Update';
+import EventosCreate from '../../components/eventos/EventosCreate';
+import { useState } from 'react';
+import EventosUpdate from '../../components/eventos/EventosUpdate';
+import EventosRead from '../../components/eventos/EventosRead';
 
 export default function Eventos() {
-    let querystring = new URLSearchParams(window.location.search);
-    let id = querystring.get('id');
+    const [id, setId] = useState(0);
+
+    const handleId = (id: number) => {
+        setId(id);
+    };
 
     return (
         <Container>
             <h1>Cadastro de Eventos</h1>
-            { id ? <Update /> : <Create /> }
+            { id ? <EventosUpdate pid={id.toString()} handleId={handleId} /> : <EventosCreate /> }
             <br />
-            <Read />
+            <EventosRead handleId={handleId} />
         </Container>
     );
 }

@@ -1,21 +1,21 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { Button, Confirm, Container, Table, TableCell } from 'semantic-ui-react'
-import DeleteButton from './components/DeleteButton';
+import { Button, Container, Table, TableCell } from "semantic-ui-react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import EventosDeleteButton from "./EventosDeleteButton";
 
-export default function Read() {
+const EventosRead = ({ handleId }: {handleId: any}) => {
     const [APIData, setAPIData] = useState([]);
-
+    
     useEffect(() => {
         axios.get(`https://backend.eventos.fernandohara.com.br/api/eventos`)
             .then((response) => {
                 setAPIData(response.data);
             })
-    }, [])
-    
+    })
+
     return (
         <Container>
-            <Table singleLine>
+            <Table>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Nome</Table.HeaderCell>
@@ -45,10 +45,10 @@ export default function Read() {
                             <Table.Cell>{data.nome}</Table.Cell>
                             <Table.Cell>{data.descricao}</Table.Cell>
                             <TableCell>
-                                <Button onClick={() => setData(data)}>Atualizar</Button>
+                                <Button onClick={() => handleId(data.id)}>Atualizar</Button>
                             </TableCell>
                             <TableCell>
-                                <DeleteButton data={data} />
+                                <EventosDeleteButton data={data} />
                             </TableCell>
                         </Table.Row>
                     )
@@ -56,5 +56,7 @@ export default function Read() {
                 </Table.Body>
             </Table>
         </Container>
-    )
-}
+    );
+};
+
+export default EventosRead;
