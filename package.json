@@ -12,9 +12,12 @@
     "@types/react-dom": "^18.2.10",
     "axios": "^1.5.1",
     "keycloak-js": "^22.0.4",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "react-semantic-ui-datepickers": "^2.17.2",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
     "typescript": "^4.9.5",
@@ -45,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "react-router-dom": "^6.16.0"
   }
 }
