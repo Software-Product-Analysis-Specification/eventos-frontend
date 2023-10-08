@@ -4,10 +4,12 @@ import axios from "axios";
 import ParticipantesDeleteButton from "./ParticipantesDeleteButton";
 
 const ParticipantesRead = ({ handleId }: {handleId: any}) => {
+    const backend_url : string | undefined = process.env.REACT_APP_BACKEND_URL;
+
     const [APIData, setAPIData] = useState([]);
     
     useEffect(() => {
-        axios.get(`https://backend.eventos.fernandohara.com.br/api/participantes`)
+        axios.get(`${backend_url}/api/participantes`)
             .then((response) => {
                 setAPIData(response.data);
             })

@@ -5,10 +5,12 @@ import EventosDeleteButton from "./EventosDeleteButton";
 import moment from "moment-timezone";
 
 const EventosRead = ({ handleId }: {handleId: any}) => {
+    const backend_url : string | undefined = process.env.REACT_APP_BACKEND_URL;
+
     const [APIData, setAPIData] = useState([]);
     
     useEffect(() => {
-        axios.get(`https://backend.eventos.fernandohara.com.br/api/eventos`)
+        axios.get(`${backend_url}/api/eventos`)
             .then((response) => {
                 setAPIData(response.data);
             })

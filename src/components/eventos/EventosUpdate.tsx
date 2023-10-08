@@ -5,6 +5,8 @@ import SemanticDatepicker from "react-semantic-ui-datepickers";
 import { Button, Container, Form } from "semantic-ui-react";
 
 const EventosUpdate = ({ pid, handleId }: { pid: string, handleId: any }) => {
+    const backend_url : string | undefined = process.env.REACT_APP_BACKEND_URL;
+
     const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -14,7 +16,7 @@ const EventosUpdate = ({ pid, handleId }: { pid: string, handleId: any }) => {
     useEffect(() => {
         if(pid.toString() !== id.toString())
         {
-            axios.get(`https://backend.eventos.fernandohara.com.br/api/eventos/${pid}`)
+            axios.get(`${backend_url}/api/eventos/${pid}`)
                 .then((response) => {
                     if(response.data.data !== null)
                     {
@@ -39,7 +41,7 @@ const EventosUpdate = ({ pid, handleId }: { pid: string, handleId: any }) => {
     const postData = () => {
         date.setHours(parseInt(time.split(':')[0]), parseInt(time.split(':')[1]), 0);
 
-        axios.put(`https://backend.eventos.fernandohara.com.br/api/eventos`, {
+        axios.put(`https://${backend_url}/api/eventos`, {
             "Id": id,
             "Nome": name,
             "Descricao": description,

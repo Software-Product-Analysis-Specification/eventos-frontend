@@ -4,6 +4,8 @@ import SemanticDatepicker from "react-semantic-ui-datepickers";
 import { Button, Container, Form } from "semantic-ui-react";
 
 const EventosCreate = () => {
+    const backend_url : string | undefined = process.env.REACT_APP_BACKEND_URL;
+
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [date, setDate] = useState(new Date());
@@ -14,7 +16,7 @@ const EventosCreate = () => {
         {
             date.setHours(parseInt(time.split(':')[0]), parseInt(time.split(':')[1]), 0);
             
-            axios.post(`https://backend.eventos.fernandohara.com.br/api/eventos`, {
+            axios.post(`${backend_url}/api/eventos`, {
                 "Nome": name,
                 "Descricao": description,
                 "Data": date

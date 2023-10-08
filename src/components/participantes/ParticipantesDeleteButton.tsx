@@ -9,7 +9,9 @@ class ParticipantesDeleteButton extends Component<ButtonProps, {}> {
     open = () => this.setState({ open: true })
     close = () => this.setState({ open: false })
     confirm = () => {
-        axios.delete(`https://backend.eventos.fernandohara.com.br/api/participantes/${this.props.data.id}`)
+        const backend_url : string | undefined = process.env.REACT_APP_BACKEND_URL;
+
+        axios.delete(`${backend_url}/api/participantes/${this.props.data.id}`)
             .then(() => {
                 this.setState({ open: false });
             });

@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Button, Container, Form } from "semantic-ui-react";
 
 const ParticipantesUpdate = ({ pid, handleId }: { pid: string, handleId: any }) => {
+    const backend_url : string | undefined = process.env.REACT_APP_BACKEND_URL;
+
     const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -11,7 +13,7 @@ const ParticipantesUpdate = ({ pid, handleId }: { pid: string, handleId: any }) 
     useEffect(() => {
         if(pid.toString() !== id.toString())
         {
-            axios.get(`https://backend.eventos.fernandohara.com.br/api/participantes/${pid}`)
+            axios.get(`${backend_url}/api/participantes/${pid}`)
                 .then((response) => {
                     setId(response.data.id);
                     setName(response.data.nome);
@@ -22,7 +24,7 @@ const ParticipantesUpdate = ({ pid, handleId }: { pid: string, handleId: any }) 
     });
 
     const postData = () => {
-        axios.put(`https://backend.eventos.fernandohara.com.br/api/participantes`, {
+        axios.put(`${backend_url}/api/participantes`, {
             "Id": id,
             "Nome": name,
             "Email": email,

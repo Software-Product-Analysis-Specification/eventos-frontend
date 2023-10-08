@@ -3,13 +3,15 @@ import { Component } from 'react'
 import { Button, ButtonProps, Confirm } from 'semantic-ui-react'
 
 class EventosDeleteButton extends Component<ButtonProps, {}> {
-
+    
     state = { open: false }
 
     open = () => this.setState({ open: true })
     close = () => this.setState({ open: false })
     confirm = () => {
-        axios.delete(`https://backend.eventos.fernandohara.com.br/api/eventos/${this.props.data.id}`)
+        const backend_url : string | undefined = process.env.REACT_APP_BACKEND_URL;
+
+        axios.delete(`${backend_url}/api/eventos/${this.props.data.id}`)
             .then(() => {
                 this.setState({ open: false });
             });

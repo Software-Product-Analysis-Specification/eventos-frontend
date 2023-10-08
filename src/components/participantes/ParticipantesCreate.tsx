@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Button, Container, Form } from "semantic-ui-react";
 
 const ParticipantesCreate = () => {
+    const backend_url : string | undefined = process.env.REACT_APP_BACKEND_URL;
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [whatsapp, setWhatsapp] = useState('');
@@ -10,7 +12,7 @@ const ParticipantesCreate = () => {
     const postData = () => {
         if(name !== '')
         {
-            axios.post(`https://backend.eventos.fernandohara.com.br/api/participantes`, {
+            axios.post(`${backend_url}/api/participantes`, {
                 "Nome": name,
                 "Email": email,
                 "Whatsapp": whatsapp
