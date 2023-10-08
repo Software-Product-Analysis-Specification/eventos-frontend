@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button, Container, Form } from "semantic-ui-react";
 
 const ParticipantesCreate = () => {
-    const backend_url : string | undefined = process.env.REACT_APP_BACKEND_URL;
+    const backend_url : string | undefined = ((window as any)._env_ ? (window as any)._env_.REACT_APP_BACKEND_URL : undefined) || process.env.REACT_APP_BACKEND_URL;
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');

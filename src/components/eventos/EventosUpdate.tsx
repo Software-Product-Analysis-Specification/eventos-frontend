@@ -5,7 +5,7 @@ import SemanticDatepicker from "react-semantic-ui-datepickers";
 import { Button, Container, Form } from "semantic-ui-react";
 
 const EventosUpdate = ({ pid, handleId }: { pid: string, handleId: any }) => {
-    const backend_url : string | undefined = process.env.REACT_APP_BACKEND_URL;
+    const backend_url : string | undefined = ((window as any)._env_ ? (window as any)._env_.REACT_APP_BACKEND_URL : undefined) || process.env.REACT_APP_BACKEND_URL;
 
     const [id, setId] = useState('');
     const [name, setName] = useState('');
