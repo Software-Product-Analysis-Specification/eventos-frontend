@@ -41,7 +41,7 @@ const EventosUpdate = ({ pid, handleId }: { pid: string, handleId: any }) => {
     const postData = () => {
         date.setHours(parseInt(time.split(':')[0]), parseInt(time.split(':')[1]), 0);
 
-        axios.put(`https://${backend_url}/api/eventos`, {
+        axios.put(`${backend_url}/api/eventos`, {
             "Id": id,
             "Nome": name,
             "Descricao": description,
