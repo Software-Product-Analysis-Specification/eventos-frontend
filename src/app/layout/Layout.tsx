@@ -24,6 +24,13 @@ const Layout = () => {
         >
             Cadastro de Participantes
         </Menu.Item>
+        <Menu.Item
+          name='eventoparticipantes'
+          to="/eventoparticipantes"
+          onClick={routeChange}
+        >
+            Cadastro de Participantes no Evento
+        </Menu.Item>
       </Menu>
 
       <Outlet />
